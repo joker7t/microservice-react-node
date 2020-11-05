@@ -14,7 +14,7 @@ const PostCreate = () => {
     }
 
     return (
-        <div className='container'>
+        <div>
             <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Title</Form.Label>
