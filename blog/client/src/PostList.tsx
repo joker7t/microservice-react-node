@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {ListGroup} from 'react-bootstrap';
 import axios from 'axios';
+import CommentCreate from './CommentCreate';
+import CommentList from './CommentList';
 
 const PostList = () => {
     const [posts, setPosts] = useState({});
@@ -15,7 +17,6 @@ const PostList = () => {
         }
 
         loadPosts();
-        Object.values(posts).forEach(r => console.log(r));
 
         //eslint-disable-next-line
     }, []);
@@ -24,6 +25,11 @@ const PostList = () => {
         <ListGroup.Item key={i}>
             <div>{post.id}</div>
             <div>{post.title}</div>
+            <hr/>
+            <h2>Add Comment</h2>
+            <CommentCreate postId={post.id}/>
+            <CommentList postId={post.id}/>
+            <h2>Comments</h2>
         </ListGroup.Item>
     );
 
