@@ -9,13 +9,13 @@ build:
     # donot need to push code to dokerhub every build image
     push: false
   artifacts:
-    - image: joker7nbt/posts
-      context: posts
+    - image: joker7nbt/ticketing-auth
+      context: auth
       docker:
         dockerfile: Dockerfile
       sync:
         # copy math files to pods
         manual:
-          - src: 'src/**/*.js'
+          - src: 'src/**/*.ts'
             dest: .
         # the rest makes container rebuilds
