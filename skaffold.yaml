@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
+build:
+  local:
+    # donot need to push code to dokerhub every yaml file change
+    push: false
+  artifacts:
+    - image: joker7nbt/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        # copy math files to pods
+        manual:
+          - src: 'src/**/*.js'
+            dest: .
+        # the rest makes container rebuilds
