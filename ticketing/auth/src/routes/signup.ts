@@ -10,7 +10,8 @@ router.post('/api/users/signup',
     ],
     (req: Request, res: Response) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty) {
+        console.log(errors);
+        if (!errors.isEmpty()) {
             res.status(400).send(errors.array());
         }
         const {email, password} = req.body;
