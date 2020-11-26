@@ -11,7 +11,7 @@ router.post('/api/users/signup',
     (req: Request, res: Response) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            res.status(400).send(errors.array());
+            throw new Error('Invalid data to signup');
         }
         const {email, password} = req.body;
         console.log('Creating user!!!');
