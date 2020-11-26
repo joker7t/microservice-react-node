@@ -15,10 +15,6 @@ spec:
       containers:
       - name: event-bus
         image: joker7nbt/event-bus
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
 ---
 apiVersion: v1
 kind: Service
