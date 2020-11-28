@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 //attrs for type checking with typescript
 interface UserAttrs {
-    username: string,
+    email: string,
     password: string
 }
 
@@ -14,7 +14,7 @@ interface UserModel extends mongoose.Model<UserDoc>{
 //interface for type checking of each User document
 //solve the issue unpredicted additional properties in mongoose model
 interface UserDoc extends mongoose.Document{
-    username: string,
+    email: string,
     password: string
 }
 
