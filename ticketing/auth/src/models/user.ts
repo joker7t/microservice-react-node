@@ -7,8 +7,15 @@ interface UserAttrs {
 }
 
 //interface for type checking of schema
-interface UserModel extends mongoose.Model<any>{
-    build(attrs: UserAttrs): any;
+interface UserModel extends mongoose.Model<UserDoc>{
+    build(attrs: UserAttrs): UserDoc;
+}
+
+//interface for type checking of each User document
+//solve the issue unpredicted additional properties in mongoose model
+interface UserDoc extends mongoose.Document{
+    username: string,
+    password: string
 }
 
 const UserSchema = new mongoose.Schema({
@@ -26,11 +33,6 @@ UserSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 }
 
-const User = mongoose.model<any, UserModel>('User', UserSchema);
-
-User.build({
-    username: "toan",
-    password: "123"
-})
+const User = mongoose.model<UserDoc, UserModel>('User', UserSchema);
 
 export {User};
