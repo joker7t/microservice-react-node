@@ -12,16 +12,16 @@ spec:
         app: auth-mongo
     spec:
       containers:
-      - name: auth-mogo
+      - name: auth-mongo
         image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-mongo-serv
+  name: auth-mongo-srv
 spec:
   selector:
-    app: auth-mogo
+    app: auth-mongo
   ports:
   - name: db 
     protocol: TCP
