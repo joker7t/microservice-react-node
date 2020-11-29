@@ -33,6 +33,10 @@ app.get('*', async () => {
 app.use(errorHandler);
 
 const start = async () => {
+    if (!process.env.JWT_SECRET) {
+        throw new Error('JWT is required!');
+    }
+
     try {
         await mongoose.connect('mongodb://auth-mongo-srv:27017/auth', {
             useNewUrlParser: true,
