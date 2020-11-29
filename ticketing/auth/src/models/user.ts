@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { Password } from '../services/password';
 
 //attrs for type checking with typescript
 interface UserAttrs {
@@ -27,6 +28,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     }
+});
+
+//middleware to run before saving user
+//use function instead of arrow function to keep the context of $this 
+UserSchema.pre('save', async function(next) {
+    if (this.isModified('password')) {
+        const hashed = await Password.hash(this.get('password'));
+        this.set('password', hashed);
+    }
+    next();
 });
 
 UserSchema.statics.build = (attrs: UserAttrs) => {
