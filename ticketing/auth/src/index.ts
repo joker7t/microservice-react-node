@@ -15,6 +15,7 @@ app.set('trust proxy', true);
 app.use(json());
 app.use(cookieSession({
     signed: false,
+    //ignore http, just care for https
     secure: true
 }));
 
