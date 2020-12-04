@@ -4,6 +4,9 @@ import {app} from '../app';
 
 let mongo: any;
 beforeAll(async () => {
+    // create env variables for testing
+    process.env.JWT_SECRET = "test";
+    
     mongo = new MongoMemoryServer();
     const mongoUri = await mongo.getUri();
     await mongoose.connect(mongoUri, {
