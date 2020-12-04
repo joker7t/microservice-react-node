@@ -33,7 +33,6 @@ router.post('/api/users/signin',
             jwt: userJwt
         };
 
-        console.log('Creating user!!!');
         res.status(200).send(existedUser);
 });
 
