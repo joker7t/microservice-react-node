@@ -21,6 +21,8 @@ spec:
               secretKeyRef:
                 name: jwt-secret
                 key: JWT_SECRET
+          - name: REACT_APP_AUTH_SERVER
+            value: 'auth-srv'
 ---
 apiVersion: v1
 kind: Service
